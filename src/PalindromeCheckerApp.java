@@ -6,6 +6,7 @@ public class PalindromeCheckerApp
         PalindromeCheckerApp t=new PalindromeCheckerApp();
         t.Usecase1();
         t.Usecase2();
+        t.Usecase3();
     }
     static void Usecase1(){
         System.out.println("Welcome to Palindrome Checker Management System");
@@ -21,14 +22,26 @@ public class PalindromeCheckerApp
         for(int i=0;i<input.length()/2;i++)
         {
             if(test[i]!=(test[n])){
-                System.out.print("The String is not palindrome");
+                System.out.println("The String is not palindrome");
                 j=1;
                 break;
             }
             n--;
         }
         if(j==0){
-            System.out.print("The String is palindrome");
+            System.out.println("The String is palindrome");
         }
     }
-}
+    static void Usecase3() {
+        String original = "racecar";
+        String reversed = "";
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
+        }
+            if (original.equals(reversed)) {
+                System.out.println("The String is a palindrome");
+            } else {
+                System.out.println("The String is not a palindrome");
+            }
+    }
+    }
