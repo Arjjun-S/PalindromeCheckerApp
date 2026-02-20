@@ -46,24 +46,36 @@ public class PalindromeCheckerApp
     }
     static void Usecase4() {
         String input = "level";
-        // Convert string to char array
         char[] charArray = input.toCharArray();
-
-        // Initialize two pointers
         int start = 0;
         int end = charArray.length - 1;
         boolean isPalindrome = true;
-
-        // Two-pointer comparison logic
         while (start < end) {
             if (charArray[start] != charArray[end]) {
                 isPalindrome = false;
                 break;
             }
-            start++; // Move forward from start
-            end--;   // Move backward from end
+            start++;
+            end--;
         }
 
         System.out.println("UC4 Result: Is '" + input + "' a palindrome? " + isPalindrome);
+    }
+    static void Usecase5() {
+        System.out.println("Executing UC5: Stack-Based Palindrome Check");
+        String input = "radar";
+        Stack<Character> stack = new Stack<Character>();
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
+        String reversed = "";
+        while (!stack.isEmpty()) {
+            reversed += stack.pop();
+        }
+        if (input.equals(reversed)) {
+            System.out.println("The String '" + input + "' is a palindrome.");
+        } else {
+            System.out.println("The String '" + input + "' is not a palindrome.");
+        }
     }
 }
