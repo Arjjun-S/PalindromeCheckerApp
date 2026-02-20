@@ -44,4 +44,26 @@ public class PalindromeCheckerApp
                 System.out.println("The String is not a palindrome");
             }
     }
+    static void Usecase4() {
+        String input = "level";
+        // Convert string to char array
+        char[] charArray = input.toCharArray();
+
+        // Initialize two pointers
+        int start = 0;
+        int end = charArray.length - 1;
+        boolean isPalindrome = true;
+
+        // Two-pointer comparison logic
+        while (start < end) {
+            if (charArray[start] != charArray[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++; // Move forward from start
+            end--;   // Move backward from end
+        }
+
+        System.out.println("UC4 Result: Is '" + input + "' a palindrome? " + isPalindrome);
     }
+}
