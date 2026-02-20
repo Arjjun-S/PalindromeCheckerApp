@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 public class PalindromeCheckerApp
 {
     public static void main(String[] args)
@@ -7,6 +10,9 @@ public class PalindromeCheckerApp
         t.Usecase1();
         t.Usecase2();
         t.Usecase3();
+        t.Usecase4();
+        t.Usecase5();
+        t.Usecase6();
     }
     static void Usecase1(){
         System.out.println("Welcome to Palindrome Checker Management System");
@@ -73,6 +79,31 @@ public class PalindromeCheckerApp
             reversed += stack.pop();
         }
         if (input.equals(reversed)) {
+            System.out.println("The String '" + input + "' is a palindrome.");
+        } else {
+            System.out.println("The String '" + input + "' is not a palindrome.");
+        }
+    }
+    static void Usecase6() {
+        System.out.println("Executing UC6: Queue + Stack Based Palindrome Check");
+        String input = "deified";
+
+        Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            stack.push(c);
+            queue.add(c);
+        }
+
+        boolean isPalindrome = true;
+        while (!stack.isEmpty()) {
+            if (!stack.pop().equals(queue.remove())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        if (isPalindrome) {
             System.out.println("The String '" + input + "' is a palindrome.");
         } else {
             System.out.println("The String '" + input + "' is not a palindrome.");
