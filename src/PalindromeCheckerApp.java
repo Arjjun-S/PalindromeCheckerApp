@@ -15,6 +15,8 @@ public class PalindromeCheckerApp
         t.Usecase4();
         t.Usecase5();
         t.Usecase6();
+        t.Usecase7();
+        t.Usecase8();
     }
     static void Usecase1(){
         System.out.println("Welcome to Palindrome Checker Management System");
@@ -131,5 +133,21 @@ public class PalindromeCheckerApp
             }
         }
         System.out.println("The String '" + input + "' is a palindrome? " + isPalindrome);
+    }
+    static void Usecase8() {
+        System.out.println("Executing UC8: Linked List Based Palindrome Checker");
+        String input = "level";
+        LinkedList<Character> ll = new LinkedList<Character>();
+        for (char ch : input.toCharArray()) {
+            ll.add(ch);
+        }
+        boolean isPalindrome = true;
+        while (ll.size() > 1) {
+            if (!ll.pollFirst().equals(ll.pollLast())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        System.out.println("UC8 Result: Is '" + input + "' a palindrome? " + isPalindrome);
     }
 }
