@@ -9,7 +9,6 @@ public class PalindromeCheckerApp
         System.out.println("Welcome to Palindrome Checker Management System");
         System.out.println("Version 1.6");
         System.out.println("System initialized Sucessfully");
-        System.out.println("Executing UC6: Queue + Stack Based Palindrome Check");
         String input = "deified";
         Stack<Character> stack = new Stack<>();
         Queue<Character> queue = new LinkedList<>();
