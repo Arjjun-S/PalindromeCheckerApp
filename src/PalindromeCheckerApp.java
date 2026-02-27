@@ -6,7 +6,6 @@ public class PalindromeCheckerApp
         System.out.println("Welcome to Palindrome Checker Management System");
         System.out.println("Version 1.5");
         System.out.println("System initialized Sucessfully");
-        System.out.println("Executing UC5: Stack-Based Palindrome Check");
         String input = "radar";
         Stack<Character> stack = new Stack<Character>();
         for (int i = 0; i < input.length(); i++) {
