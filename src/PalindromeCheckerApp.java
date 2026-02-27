@@ -4,54 +4,52 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.Deque;
-interface PalindromeStrategy {
-    boolean isValid(String input);
-}
-class StackStrategy implements PalindromeStrategy {
-    public boolean isValid(String input) {
-        String cleaned = input.toLowerCase().replaceAll("[^a-z0-9]", "");
-        Stack<Character> stack = new Stack<>();
-        for (char c : cleaned.toCharArray()) stack.push(c);
+public class PalindromeCheckerApp {
 
-        StringBuilder reversed = new StringBuilder();
-        while (!stack.isEmpty()) reversed.append(stack.pop());
-
-        return cleaned.equals(reversed.toString());
-    }
-}
-class TwoPointerStrategy implements PalindromeStrategy {
-    public boolean isValid(String input) {
-        String cleaned = input.toLowerCase().replaceAll("[^a-z0-9]", "");
-        int left = 0, right = cleaned.length() - 1;
-        while (left < right) {
-            if (cleaned.charAt(left++) != cleaned.charAt(right--)) return false;
-        }
-        return true;
-    }
-}
-class PalindromeContext {
-    private PalindromeStrategy strategy;
-
-    public void setStrategy(PalindromeStrategy strategy) {
-        this.strategy = strategy;
-    }
-
-    public boolean executeStrategy(String input) {
-        return strategy.isValid(input);
-    }
-}
-public class PalindromeCheckerApp
-{
     public static void main(String[] args) {
         System.out.println("Welcome to Palindrome Checker Management System");
-        System.out.println("Version 1.12");
-        System.out.println("System initialized Sucessfully");
-        String input = "Was it a car or a cat I saw?";
-        PalindromeContext context = new PalindromeContext();
-        context.setStrategy(new StackStrategy());
-        System.out.println("Using Stack Strategy: " + context.executeStrategy(input));
-        context.setStrategy(new TwoPointerStrategy());
-        System.out.println("Using Two-Pointer Strategy: " + context.executeStrategy(input));
+        System.out.println("Version 1.13");
+        System.out.println("System initialized Successfully");
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < 10000; i++) sb.append("a");
+        String largeInput = sb.toString();
+        long startTimeStack = System.nanoTime();
+        checkStack(largeInput);
+        long endTimeStack = System.nanoTime();
+        long durationStack = endTimeStack - startTimeStack;
+        long startTimePointer = System.nanoTime();
+        checkPointer(largeInput);
+        long endTimePointer = System.nanoTime();
+        long durationPointer = endTimePointer - startTimePointer;
+        System.out.println("-----------------------------------------");
+        System.out.println("Algorithm Type      | Execution Time (ns)");
+        System.out.println("-----------------------------------------");
+        System.out.println("Stack-Based         | " + durationStack);
+        System.out.println("Two-Pointer         | " + durationPointer);
+        System.out.println("-----------------------------------------");
+        if (durationPointer > 0) {
+            double speedup = (double)durationStack / durationPointer;
+            System.out.printf("Insight: Two-Pointer is %.2fx faster than Stack.%n", speedup);
+        }
+    }
 
+    private static void checkStack(String input) {
+        Stack<Character> s = new Stack<>();
+        for (char c : input.toCharArray()) {
+            s.push(c);
+        }
+        StringBuilder rev = new StringBuilder();
+        while (!s.isEmpty()) {
+            rev.append(s.pop());
+        }
+        input.equals(rev.toString());
+    }
+    private static void checkPointer(String input) {
+        int i = 0, j = input.length() - 1;
+        while (i < j) {
+            if (input.charAt(i++) != input.charAt(j--)) {
+                break;
+            }
+        }
     }
 }
