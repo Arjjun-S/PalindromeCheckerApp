@@ -1,5 +1,8 @@
+import java.util.Scanner;
 public class PalindromeCheckerApp {
-    static void main() {
-        System.out.println("hello world");
+    public static void main(String[] args) {
+        System.out.println("Welcome to Palindrome Checker Management System");
+        System.out.println("Version 1.1");
+        System.out.println("System initialized Sucessfully");gti
     }
 }
