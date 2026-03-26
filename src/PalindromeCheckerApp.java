@@ -4,21 +4,21 @@ public class PalindromeCheckerApp
     public static void main(String[] args)
     {
         System.out.println("Welcome to Palindrome Checker Management System");
-        System.out.println("Version 1.4");
+        System.out.println("Version 1.5");
         System.out.println("System initialized Sucessfully");
-        String input = "level";
-        char[] charArray = input.toCharArray();
-        int start = 0;
-        int end = charArray.length - 1;
-        boolean isPalindrome = true;
-        while (start < end) {
-            if (charArray[start] != charArray[end]) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
+        String input = "radar";
+        Stack<Character> stack = new Stack<Character>();
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
         }
-        System.out.println("UC4 Result: Is '" + input + "' a palindrome? " + isPalindrome);
+        String reversed = "";
+        while (!stack.isEmpty()) {
+            reversed += stack.pop();
+        }
+        if (input.equals(reversed)) {
+            System.out.println("The String '" + input + "' is a palindrome.");
+        } else {
+            System.out.println("The String '" + input + "' is not a palindrome.");
+        }
     }
 }
