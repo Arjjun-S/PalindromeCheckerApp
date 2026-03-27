@@ -2,32 +2,29 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.ArrayDeque;
+import java.util.Deque;
 public class PalindromeCheckerApp
 {
     public static void main(String[] args)
     {
         System.out.println("Welcome to Palindrome Checker Management System");
-        System.out.println("Version 1.6");
+        System.out.println("Version 1.7");
         System.out.println("System initialized Sucessfully");
-        String input = "deified";
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+        String input = "rotator";
+        Deque<Character> deque = new ArrayDeque<>();
         for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            stack.push(c);
-            queue.add(c);
+            deque.addLast(input.charAt(i));
         }
         boolean isPalindrome = true;
-        while (!stack.isEmpty()) {
-            if (!stack.pop().equals(queue.remove())) {
+        while (deque.size() > 1) {
+            Character front = deque.removeFirst();
+            Character rear = deque.removeLast();
+            if (!front.equals(rear)) {
                 isPalindrome = false;
                 break;
             }
         }
-        if (isPalindrome) {
-            System.out.println("The String '" + input + "' is a palindrome.");
-        } else {
-            System.out.println("The String '" + input + "' is not a palindrome.");
-        }
+        System.out.println("The String '" + input + "' is a palindrome? " + isPalindrome);
     }
 }
