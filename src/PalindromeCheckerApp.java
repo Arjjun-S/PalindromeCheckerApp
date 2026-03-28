@@ -9,20 +9,19 @@ public class PalindromeCheckerApp
     public static void main(String[] args)
     {
         System.out.println("Welcome to Palindrome Checker Management System");
-        System.out.println("Version 1.8");
+        System.out.println("Version 1.9");
         System.out.println("System initialized Sucessfully");
-        String input = "level";
-        LinkedList<Character> ll = new LinkedList<Character>();
-        for (char ch : input.toCharArray()) {
-            ll.add(ch);
+        String input = "malayalam";
+        boolean isPalindrome = checkRecursive(input, 0, input.length() - 1);
+        System.out.println("Result: Is '" + input + "' a palindrome? " + isPalindrome);
+    }
+    static boolean checkRecursive(String str, int start, int end) {
+        if (start >= end) {
+            return true;
         }
-        boolean isPalindrome = true;
-        while (ll.size() > 1) {
-            if (!ll.pollFirst().equals(ll.pollLast())) {
-                isPalindrome = false;
-                break;
-            }
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
         }
-        System.out.println("UC8 Result: Is '" + input + "' a palindrome? " + isPalindrome);
+        return checkRecursive(str, start + 1, end - 1);
     }
 }
