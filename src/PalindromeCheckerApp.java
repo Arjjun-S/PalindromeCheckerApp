@@ -9,22 +9,20 @@ public class PalindromeCheckerApp
     public static void main(String[] args)
     {
         System.out.println("Welcome to Palindrome Checker Management System");
-        System.out.println("Version 1.7");
+        System.out.println("Version 1.8");
         System.out.println("System initialized Sucessfully");
-        String input = "rotator";
-        Deque<Character> deque = new ArrayDeque<>();
-        for (int i = 0; i < input.length(); i++) {
-            deque.addLast(input.charAt(i));
+        String input = "level";
+        LinkedList<Character> ll = new LinkedList<Character>();
+        for (char ch : input.toCharArray()) {
+            ll.add(ch);
         }
         boolean isPalindrome = true;
-        while (deque.size() > 1) {
-            Character front = deque.removeFirst();
-            Character rear = deque.removeLast();
-            if (!front.equals(rear)) {
+        while (ll.size() > 1) {
+            if (!ll.pollFirst().equals(ll.pollLast())) {
                 isPalindrome = false;
                 break;
             }
         }
-        System.out.println("The String '" + input + "' is a palindrome? " + isPalindrome);
+        System.out.println("UC8 Result: Is '" + input + "' a palindrome? " + isPalindrome);
     }
 }
